@@ -15,7 +15,7 @@ python3 -m pip install --upgrade pip
 <p>
 
 ## WorldBankAPI class
-This file contains the WorldBankAPI class to connect to The World Bank API that allows for the search and retrieval of the public, Bank documents available in the Documents & Reports site.  Records can be retrieved in a format useful for research and for inclusion in web sites outside of Documents & Reports and the World Bank. To read more about it, visit [World Bank API documentation] (https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation)
+This file contains the WorldBankAPI class to connect to The World Bank API that allows for the search and retrieval of the public, Bank documents available in the Documents & Reports site.  Records can be retrieved in a format useful for research and for inclusion in web sites outside of Documents & Reports and the World Bank. To read more about it, visit [World Bank API documentation](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation)
 
 ## Methods of the World Bank API cass
 The class WorldBankAPI() recieves the country code to work.
