@@ -1,4 +1,4 @@
-from module1_2 import WorldBankAPI
+from worldbankapi import WorldBankAPI
 import matplotlib.pyplot as plt
 
 # Initialize the WorldBankAPI object

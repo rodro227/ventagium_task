@@ -2,10 +2,11 @@ import requests
 import pandas as pd
 
 class WorldBankAPI:
-    def __init__(self, country_code):
+    def __init__(self, country_code, country_name):
         self.base_url = "http://api.worldbank.org/v2/"
         #self.indicator_code = indicator_code
         self.country_code = country_code
+        self.country_name = country_name
         self.format = "json"
         
     def get_population(self, country_code):
@@ -67,7 +68,7 @@ class WorldBankAPI:
 
 
     
-    def get_all_data(self, country_code):
+    def get_all_data(self, country_code, country_name):
         population = self.get_population(country_code)
         gdp_per_capita = self.get_gdp_per_capita(country_code)
         health_exp = self.get_health_exp_per_capita(country_code)
@@ -76,11 +77,11 @@ class WorldBankAPI:
         #print(inflation.head())
         unemployment = self.get_unemployment(country_code)
         fdi = self.get_fdi_data(country_code)
-        print(fdi.head())
+        #print(fdi.head())
         
         df = pd.concat([population, gdp_per_capita, health_exp, inflation, unemployment, fdi], axis=1, sort=True)
         
-        df.to_csv('datos.csv')
+        df.to_csv(f'data/{country_name}.csv')
         
         return df
 
