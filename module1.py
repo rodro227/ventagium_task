@@ -7,12 +7,13 @@ class WorldBankAPI:
         self.endpoint = f"country/{iso2_code}/indicator/{indicator_id}"
         self.format = "json"
         
-    def get_data(self):
+    def get_all_data(self):
         url = f"{self.base_url}{self.endpoint}?format={self.format}"
         response = requests.get(url)
         data = response.json()[1]
         df = pd.json_normalize(data)
-        df = df[['country.value', 'date', 'value']]
-        df.columns = ['Country', 'Year', 'Population']
+        df = df[df['date'] >= str(int(df['date'].max()) - 9)]
+        #df = df[['country.value', 'date', 'value']]
+        #df.columns = ['Country', 'Year', 'Population']
         return df
     
