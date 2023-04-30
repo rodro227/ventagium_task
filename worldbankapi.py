@@ -80,7 +80,7 @@ class WorldBankAPI:
         #print(fdi.head())
         
         df = pd.concat([population, gdp_per_capita, health_exp, inflation, unemployment, fdi], axis=1, sort=True)
-        
+        df['Country'] = country_name
         df.to_csv(f'data/{country_name}.csv')
         
         return df

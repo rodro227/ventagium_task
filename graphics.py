@@ -1,19 +1,14 @@
-from worldbankapi import WorldBankAPI
+import pandas as pd
 import matplotlib.pyplot as plt
 
-# Initialize the WorldBankAPI object
-api = WorldBankAPI("US")
-
-# Retrieve the data for a specific country
-country_code = "US"
-data = api.get_all_data(country_code)
-
-# Plot the data
-years = [item["date"] for item in data]
-values = [item["value"] for item in data]
-plt.plot(years, values)
-plt.title(f"{country_code} Data")
-plt.xlabel("Year")
-plt.ylabel("Value")
-plt.show()
-
+# Bar Chart of the GPD of each country
+class GDPChart:
+    def __init__(self, df):
+        self.df = df
+        
+    def plot(self):
+        plt.bar(self.df['Country'], self.df['GDP per capita (current US$)'])
+        plt.xticks(rotation=90)
+        plt.ylabel('GDP per capita (current US$)')
+        plt.title('GPD (Gross domestic product)')
+        plt.show()
