@@ -93,16 +93,54 @@ Its purpose is to plot charts using the dataframes created in the for cicle usin
 
 There are four classes that generate charts.
 
-1. Population chart class
-It generates a circle chart using the dataframe with all the countries.It only need the dataframe to work, in the project, it is being used like that:
+<h2> 1. Population chart class </h2>
+
+It generates a circle chart using the dataframe with all the countries. It only need the dataframe to work, in the project, it is being used like that:
 ```
 PopulationChart(df_all)
 population_chart.plot()
 ```
 Example of the chart generated:
 <p align="center">
-  <img src="charts/population_chart.png" width="50%" alt="descripción de la imagen">
+  <img src="charts/population_chart.png" width="50%" alt="population chart">
 </p>
+
+<h2> 2. GDP bar chart </h2>
+
+It generates a bar chart using the dataframe with all the countries. It needs the dataframe to work and the starting year to show. In the project, it is being used like that:
+```
+gdp_chart = GDPChart(df_all, 2016)
+gdp_chart.plot()
+```
+Example of the chart generated:
+<p align="center">
+  <img src="charts/gpd_chart.png" width="50%" alt="gdp chart">
+</p>
+
+<h2> 3. Unemployment line chart </h2>
+
+It generates a line chart using the dataframe with all the countries. It only needs the dataframe to work. In the project, it is being used like that:
+```
+unemployment_chart = UnemploymentChart(df_all)
+unemployment_chart.plot()
+```
+Example of the chart generated:
+<p align="center">
+  <img src="charts/unemployment_chart.png" width="50%" alt="unemployment chart">
+</p>
+
+<h2> 4. FDI vs Inflation Chart </h2>
+
+It generates a scatter chart using the dataframe with all the countries. You need to type as parameters the dataframe, the country and the start year (In this case the start year is not needed because it was declared in graphics.py as 2000). In the project, it is being used like that:
+```
+chart = FDIInflationChart(df_all, 'Mexico')
+chart.plot()
+```
+Example of the chart generated:
+<p align="center">
+  <img src="charts/fdi_inflation_chart.png" width="50%" alt="FDI vs inflation chart">
+</p>
+>Note: Remeber that this graphic is only for one country.
 
 </p>
 </details>
