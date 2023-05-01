@@ -1,12 +1,12 @@
 from worldbankapi import WorldBankAPI
 from countrieswb import CountriesAtWBAPI
-from graphics import GDPChart
+from graphics import GDPChart, UnemploymentChart
 import pandas as pd
 
 if __name__ == "__main__":
     #countries = CountriesAtWBAPI().get_countries()
     countries=[('United States','US'), ('Mexico', 'MX'), ('Argentina','AR'), ('China', 'CN')]
-    
+
     #List of dataframes
     dfs = []
 
@@ -20,7 +20,13 @@ if __name__ == "__main__":
         if n == 9:
             print("Se ha alcanzado el valor máximo para esta prueba:", n, 'países')
             break
+    
     df_all = pd.concat(dfs)
-    gdp_chart = GDPChart(df_all)
+    gdp_chart = GDPChart(df_all, 2016)
     gdp_chart.plot()
+
+    #print(df.columns)
+    #unemployment_chart = UnemploymentChart(df_all)
+    #unemployment_chart.plot()
+
     
