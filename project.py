@@ -50,7 +50,7 @@ if __name__ == "__main__":
     print('GDP chart generated, printing time and memory...')
     pt.end()
     print()
-    #gdp_chart.plot()
+    gdp_chart.plot()
 
     #print(df.columns)
 
@@ -61,7 +61,7 @@ if __name__ == "__main__":
     print('Unemployment chart generated, printing time and memory...')
     pt.end()
     print()
-    #unemployment_chart.plot()
+    unemployment_chart.plot()
 
     #Generates the Population circle graph
     print('Generating population chart...')
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     print('Population chart generated, printing time and memory...')
     pt.end()
     print()
-    #population_chart.plot()
+    population_chart.plot()
     
     #print(df_all.info())
     #print(df.index.unique())
@@ -78,8 +78,8 @@ if __name__ == "__main__":
     #Generates the FDI vs Inflation scatter plot
     print('Generating FDI vs Inflation chart...')
     pt.start()
-    chart = FDIInflationChart(df_all, 'China')
+    chart = FDIInflationChart(df_all, 'Mexico')
     print('FDI vs Inflation chart generated, printing time and memory...')
     pt.end()
     print()
-    #chart.plot()
+    chart.plot()
