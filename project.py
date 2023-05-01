@@ -1,6 +1,6 @@
 from worldbankapi import WorldBankAPI
 from countrieswb import CountriesAtWBAPI
-from graphics import GDPChart, UnemploymentChart
+from graphics import GDPChart, UnemploymentChart, PopulationChart, FDIInflationChart
 import pandas as pd
 
 if __name__ == "__main__":
@@ -22,11 +22,15 @@ if __name__ == "__main__":
             break
     
     df_all = pd.concat(dfs)
-    gdp_chart = GDPChart(df_all, 2016)
-    gdp_chart.plot()
+    #gdp_chart = GDPChart(df_all, 2016)
+    #gdp_chart.plot()
 
-    #print(df.columns)
+    print(df.columns)
     #unemployment_chart = UnemploymentChart(df_all)
     #unemployment_chart.plot()
 
-    
+    #population_chart = PopulationChart(df_all)
+    #population_chart.plot()
+
+    chart = FDIInflationChart(df_all, 'United States', 2000, 2020)
+    chart.plot()

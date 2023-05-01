@@ -1,44 +1,43 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-"""
-# Bar Chart of the GPD of each country
-class GDPChart:
-    def __init__(self, df, year):
-        self.df = df[df['Year'] == year]
+
+#Circular chart for global population distribution
+class PopulationChart:
+    def __init__(self, df):
+        self.df = df
         
     def plot(self):
-        plt.bar(self.df['Country'], self.df['GDP per capita (current US$)'])
-        plt.xticks(rotation=90)
-        plt.ylabel('GDP per capita (current US$)')
-        plt.title(f'GPD (Gross domestic product) - Year {self.df.iloc[0]["Year"]}')
-        plt.savefig('charts/gpd_chart.png')
+        # Sum the population for each country
+        total_population = self.df.groupby('Country')['Population, total'].sum()
+        
+        # Create the pie chart
+        fig, ax = plt.subplots()
+        ax.pie(total_population, labels=total_population.index, autopct='%1.1f%%')
+        ax.set_title('Population distribution by country')
+        plt.savefig('charts/population_chart.png')
         plt.show()
-"""
+
+# Bar Chart of the GPD of each country
 class GDPChart:
     def __init__(self, df, start_year):
         self.df = df[df['Year'] >= start_year]
         self.start_year = start_year
     
-    def plot(self):
-        years = self.df['Year'].unique()
-        n_years = len(years)
-        nrows = int(np.ceil(n_years/2))
-        
-        fig, axs = plt.subplots(nrows=nrows, ncols=2, figsize=(12, 4*nrows))
-        axs = axs.ravel()
-        
-        for i, year in enumerate(years):
-            ax = axs[i]
-            year_df = self.df[self.df['Year']==year]
-            ax.bar(year_df['Country'], year_df['GDP per capita (current US$)'])
-            ax.set_xticklabels(year_df['Country'], rotation=90)
-            ax.set_ylabel('GDP per capita (current US$)')
-            ax.set_title(f'GPD (Gross domestic product) - {year}')
-        
-        plt.tight_layout()
-        plt.savefig('charts/gpd_chart.png')
-        plt.show()
+def plot(self):
+    print('Data:', self.data)
+    print('Years:', self.years)
+    print('Country:', self.country)
+    fig, ax = plt.subplots()
+    for year in self.years:
+        df = self.data[self.data['Year'] == year]
+        ax.scatter(df['Inflation, consumer prices (annual %)'], df['Foreign direct investment, net inflows (% of GDP)'], label=year)
+    ax.set_xlabel('Inflation (%)')
+    ax.set_ylabel('FDI (% of GDP)')
+    ax.set_title(f'{self.country} - FDI vs Inflation ({self.start_year}-{self.years[-1]})')
+    ax.legend()
+    plt.show()
+
 
 
 #Line chart of the unemployment of each country per year
@@ -59,11 +58,29 @@ class UnemploymentChart:
         plt.savefig('charts/unemployment_chart.png')
         plt.show()
 
-
-
-
-
-
+#Inflation vs FDI
+class FDIInflationChart:
+    def __init__(self, data, country, start_year, end_year):
+        self.data = data
+        self.country = country
+        self.start_year = start_year
+        self.end_year = end_year
+        self.years = [str(year) for year in range(self.start_year, self.end_year+1)]
+        
+    def plot(self):
+        fig, ax = plt.subplots()
+        for year in self.years:
+            df = self.data[self.data['Year'] == year]
+            if not df.empty:
+                ax.scatter(df['Inflation, consumer prices (annual %)'], df['Foreign direct investment, net inflows (% of GDP)'], label=year)
+        ax.set_xlabel('Inflation (%)')
+        ax.set_ylabel('FDI (% of GDP)')
+        ax.set_title(f'{self.country} - FDI vs Inflation ({self.start_year}-{self.end_year})')
+        if len(ax.lines) > 0:
+            ax.legend()
+            plt.show()
+        else:
+            print(f"No data found for {self.country} in the given time range.")
 
 
 
