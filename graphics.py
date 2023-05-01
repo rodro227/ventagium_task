@@ -17,7 +17,7 @@ class PopulationChart:
         ax.pie(total_population, labels=total_population.index, autopct='%1.1f%%')
         ax.set_title('Population distribution by country')
         plt.savefig('charts/population_chart.png')
-        plt.show()
+        #plt.show()
 
 # Bar Chart of the GPD of each country
 class GDPChart:
@@ -37,7 +37,7 @@ def plot(self):
     ax.set_ylabel('FDI (% of GDP)')
     ax.set_title(f'{self.country} - FDI vs Inflation ({self.start_year}-{self.years[-1]})')
     ax.legend()
-    plt.show()
+    #plt.show()
 
 
 
@@ -57,9 +57,9 @@ class UnemploymentChart:
         ax.set_title('Unemployment rates by country')
         ax.legend(loc='upper left')
         plt.savefig('charts/unemployment_chart.png')
-        plt.show()
+        #plt.show()
 
-#Inflation vs FDI
+#Inflation vs FDI scatter plot
 
 class FDIInflationChart:
     def __init__(self, df, country, start_year=2000):
@@ -95,4 +95,4 @@ class FDIInflationChart:
         
         plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=8, markerscale=0.8)
         plt.savefig('charts/fdi_inflation_chart.png')
-        plt.show()
+        #plt.show()
