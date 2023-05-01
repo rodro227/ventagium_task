@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import seaborn as sns
 
 #Circular chart for global population distribution
 class PopulationChart:
@@ -59,31 +60,39 @@ class UnemploymentChart:
         plt.show()
 
 #Inflation vs FDI
+
 class FDIInflationChart:
-    def __init__(self, data, country, start_year, end_year):
-        self.data = data
-        self.country = country
+    def __init__(self, df, country, start_year=2000):
+        self.df = df
+        self.country = country.title()
+
         self.start_year = start_year
-        self.end_year = end_year
-        self.years = [str(year) for year in range(self.start_year, self.end_year+1)]
-        
+        self.years = [y for y in range(start_year, 2022) if y in df.loc[df['Country'] == country, 'Year'].values]
+
+    
     def plot(self):
-        fig, ax = plt.subplots()
-        for year in self.years:
-            df = self.data[self.data['Year'] == year]
-            if not df.empty:
-                ax.scatter(df['Inflation, consumer prices (annual %)'], df['Foreign direct investment, net inflows (% of GDP)'], label=year)
-        ax.set_xlabel('Inflation (%)')
-        ax.set_ylabel('FDI (% of GDP)')
-        ax.set_title(f'{self.country} - FDI vs Inflation ({self.start_year}-{self.end_year})')
-        if len(ax.lines) > 0:
-            ax.legend()
-            plt.show()
-        else:
-            print(f"No data found for {self.country} in the given time range.")
+        data = self.df.loc[(self.df['Country'] == self.country) & (self.df['Year'].isin(self.years)), :]
+        if data.empty:
+            print(f"No data found for {self.country}")
+            return
 
+        # Convertir FDI neto a dólares per cápita
+        data['FDI, net inflows (BoP, current US$) per capita'] = data['Foreign direct investment, net inflows (% of GDP)'] * data['GDP per capita (current US$)'] / 100
 
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax = sns.scatterplot(data=data, x='Inflation, consumer prices (annual %)', y='FDI, net inflows (BoP, current US$) per capita', hue='Year', s=80, legend='full')
+        ax.set_xlabel('Inflation, consumer prices (annual %)')
+        ax.set_ylabel('Foreign direct investment, net inflows (BoP, current US$) per capita')
+        ax.set_title(f'{self.country} - FDI vs Inflation ({self.start_year}-{self.years[-1]})')
 
-
-
-
+        # Ajustar rango de los ejes
+        x_min, x_max = data['Inflation, consumer prices (annual %)'].min(), data['Inflation, consumer prices (annual %)'].max()
+        y_min, y_max = data['FDI, net inflows (BoP, current US$) per capita'].min(), data['FDI, net inflows (BoP, current US$) per capita'].max()
+        x_padding = (x_max - x_min) * 0.1
+        y_padding = (y_max - y_min) * 0.1
+        ax.set_xlim([x_min - x_padding, x_max + x_padding])
+        ax.set_ylim([y_min - y_padding, y_max + y_padding])
+        
+        plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', fontsize=8, markerscale=0.8)
+        plt.savefig('charts/fdi_inflation_chart.png')
+        plt.show()

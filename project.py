@@ -5,7 +5,7 @@ import pandas as pd
 
 if __name__ == "__main__":
     #countries = CountriesAtWBAPI().get_countries()
-    countries=[('United States','US'), ('Mexico', 'MX'), ('Argentina','AR'), ('China', 'CN')]
+    countries=[('Mexico', 'MX'), ('Argentina','AR'), ('China', 'CN')]
 
     #List of dataframes
     dfs = []
@@ -25,12 +25,14 @@ if __name__ == "__main__":
     #gdp_chart = GDPChart(df_all, 2016)
     #gdp_chart.plot()
 
-    print(df.columns)
+    #print(df.columns)
     #unemployment_chart = UnemploymentChart(df_all)
     #unemployment_chart.plot()
 
     #population_chart = PopulationChart(df_all)
     #population_chart.plot()
+    #print(df_all.info())
+    print(df.index.unique())
 
-    chart = FDIInflationChart(df_all, 'United States', 2000, 2020)
+    chart = FDIInflationChart(df_all, 'China')
     chart.plot()
