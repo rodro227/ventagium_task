@@ -8,13 +8,13 @@ if __name__ == "__main__":
 
     #Decide if you want to use all the countries or only MX, AR or CN
     while True:
-        print('Type ´A´ if you want to run for all the countries or ´T´ to run a test with 3 countries')
+        print('Type ´A´ if you want to run for all the countries or ´T´ to run a test with 7 countries')
         answer1 = input()
-        if answer1 == 'A':
+        if answer1 == 'A' or answer1 == 'a':
             countries = CountriesAtWBAPI().get_countries()
             break
-        elif answer1 == 'T':
-            countries=[('Mexico', 'MX'), ('Argentina','AR'), ('China', 'CN')]
+        elif answer1 == 'T' or answer1 == 't':
+            countries=[('United States','US'),('Rusia','RU'),('Brasil','BR'),('Canada','CA'),('Mexico', 'MX'), ('Argentina','AR'), ('China', 'CN')]
             break
         else:
             print('invalid option')
@@ -33,9 +33,9 @@ if __name__ == "__main__":
         df = api.get_all_data(country[1],country[0])
         dfs.append(df)
         print('Data of', country[0], 'ready')
-        if n == 9:
-            print("Se ha alcanzado el valor máximo para esta prueba:", n, 'países')
-            break
+        #if n == 9:
+        #    print("Se ha alcanzado el valor máximo para esta prueba:", n, 'países')
+        #    break
 
     df_all = pd.concat(dfs)
 
