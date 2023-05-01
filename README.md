@@ -90,7 +90,9 @@ The method inside this get_countries() retourns a list of tuples, it is useful b
 <p>
 Its purpose is to plot charts using the dataframes created in the for cicle using the worldbankapi class.
 > The charts are being store in the charts directory.
+
 There are four classes that generate charts.
+
 1. Population chart class
 It generates a circle chart using the dataframe with all the countries.It only need the dataframe to work, in the project, it is being used like that:
 ```
