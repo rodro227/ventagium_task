@@ -27,6 +27,7 @@ if __name__ == "__main__":
     #Starting the test
     pt.start()
 
+    #Starting to get all the data from the WorldBankAPI country by country
     for country in countries:
         n += 1
         api = WorldBankAPI(country[1],country[0])
@@ -37,6 +38,7 @@ if __name__ == "__main__":
         #    print("Se ha alcanzado el valor máximo para esta prueba:", n, 'países')
         #    break
 
+    #Concat the list of dataframes
     df_all = pd.concat(dfs)
 
     #Ending test

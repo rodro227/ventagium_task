@@ -88,6 +88,18 @@ The method inside this get_countries() retourns a list of tuples, it is useful b
 
 <details><summary><h1>Description of graphics.py</h1></summary>
 <p>
+Its purpose is to plot charts using the dataframes created in the for cicle using the worldbankapi class.
+> The charts are being store in the charts directory.
+There are four classes that generate charts.
+1. Population chart class
+It generates a circle chart using the dataframe with all the countries.It only need the dataframe to work, in the project, it is being used like that:
+```
+PopulationChart(df_all)
+population_chart.plot()
+```
+Example of the chart generated:
+![Population chart](charts/population_chart.png)
+
 </p>
 </details>
 
@@ -98,5 +110,11 @@ Project.py is the main file of the project because it is responsible of run the 
 Basically, at this moment is calling the CountriesWBAPI class to get all the countries as a list of tuples and use it to iterate a for cicle using the name of the country and the code. Inside this cicle the WorldBankAPI class is called to generate all the data from the country list.
 > Currently the cicle is stoping with a count of 9 countries, because of testing purpouses.
    
+</p>
+</details>
+
+<details><summary><h1>Description of tester.py</h1></summary>
+<p>
+The tester.py file 
 </p>
 </details>
