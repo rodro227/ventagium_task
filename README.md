@@ -100,7 +100,9 @@ PopulationChart(df_all)
 population_chart.plot()
 ```
 Example of the chart generated:
-![Population chart](charts/population_chart.png)
+<p align="center">
+  <img src="charts/population_chart.png" width="50%" alt="descripción de la imagen">
+</p>
 
 </p>
 </details>
