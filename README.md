@@ -89,6 +89,7 @@ The method inside this get_countries() retourns a list of tuples, it is useful b
 <details><summary><h1>Description of graphics.py</h1></summary>
 <p>
 Its purpose is to plot charts using the dataframes created in the for cicle using the worldbankapi class.
+
 > The charts are being store in the charts directory.
 
 There are four classes that generate charts.
@@ -140,7 +141,8 @@ Example of the chart generated:
 <p align="center">
   <img src="charts/fdi_inflation_chart.png" width="50%" alt="FDI vs inflation chart">
 </p>
->Note: Remeber that this graphic is only for one country.
+
+> Note: Remeber that this graphic is only for one country.
 
 </p>
 </details>

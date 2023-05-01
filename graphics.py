@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-#Circular chart for global population distribution
+#Circle chart for global population distribution
 class PopulationChart:
     def __init__(self, df):
         self.df = df
