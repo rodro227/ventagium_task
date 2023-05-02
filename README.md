@@ -1,7 +1,13 @@
-# Ventagium - TAKE HOME ASSIGNMENT – Rodrigo Orozco
+# Ventagium - HOME ASSIGNMENT – Rodrigo Orozco
 
 This project was done in order to enter to Ventagium Data Consulting.
 You can find the instructions in the general notes section.
+
+Run the code with:
+```
+python3 project.py
+```
+And follow the prints.
 
 <details><summary><h2>General Notes</h2></summary>
 <p>
@@ -150,15 +156,26 @@ Example of the chart generated:
 <details><summary><h1>Description of project.py</h1></summary>
 <p>
 Project.py is the main file of the project because it is responsible of run the classes and methods needed to achieve the goal descrived in the instructions.
+It consists of three parts:
 
-Basically, at this moment is calling the CountriesWBAPI class to get all the countries as a list of tuples and use it to iterate a for cicle using the name of the country and the code. Inside this cicle the WorldBankAPI class is called to generate all the data from the country list.
-> Currently the cicle is stoping with a count of 9 countries, because of testing purpouses.
+1. The first part uses a while and if cicles to confirm if a user wants to test with seven countries or run the code with all the available countries in the world bank api.
+2. The second part is calling the CountriesWBAPI class to get all the countries as a list of tuples and use it to iterate a for cicle using the name of the country and the code. Inside this cicle the WorldBankAPI class is called to generate all the data from the country list.
+3. The third part invoques the graphics classes to save and show the charts.
+
+> The testing is done in the second part and for each graphic, so you will find the start() and end() before and after the codes.
    
 </p>
 </details>
 
 <details><summary><h1>Description of tester.py</h1></summary>
 <p>
-The tester.py file 
+The tester.py file includes one class with two methods, the purpouse of them is to print the time elapsed between the start and the end and the memory used in that moment. To use start() and end(), locate start() before running the code to test and locate end() after this code, for example, to test the population chart class:
+
+```
+pt.start()
+population_chart = PopulationChart(df_all)
+pt.end()
+```
+
 </p>
 </details>
